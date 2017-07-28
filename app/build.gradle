@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        wandojia { manifestPlaceholders = [CHANNEL_VALUE: "wandojia"]}
+        baidu { manifestPlaceholders = [CHANNEL_VALUE: "baidu"]}
+        c360 { manifestPlaceholders = [CHANNEL_VALUE: "c360"]}
+        tencent { manifestPlaceholders = [CHANNEL_VALUE: "tencent"]}
+    }
 }
 
 dependencies {

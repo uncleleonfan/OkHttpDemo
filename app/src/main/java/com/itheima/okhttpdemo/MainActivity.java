@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mGson = new Gson();
-//        loadDataSync();
+        loadDataSync();
 //        loadDataAysnc();
 //        loadNewsArrayData();
-        loadStringArray();
+//        loadStringArray();
     }
 
     private void loadStringArray() {
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadDataAysnc() {
-        String url = "http://10.0.2.2:8080/zhbj/categories.json";
+        String url = "https://api.github.com/users/uncleleonfan";
         Request request = new Request.Builder().get().url(url).build();
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.newCall(request).enqueue(new Callback() {
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String url = "http://10.0.2.2:8080/zhbj/categories.json";
+                String url = "https://api.github.com/users/uncleleonfan";
                 Request request = new Request.Builder().get().url(url).build();
                 OkHttpClient okHttpClient = new OkHttpClient();
                 try {
@@ -118,5 +118,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
-
 }
