@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mGson = new Gson();
-        loadDataSync();
-//        loadDataAysnc();
+//        loadDataSync();
+        loadDataAsync();
 //        loadNewsArrayData();
 //        loadStringArray();
     }
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadDataAysnc() {
+    private void loadDataAsync() {
         String url = "https://api.github.com/users/uncleleonfan";
         Request request = new Request.Builder().get().url(url).build();
         OkHttpClient okHttpClient = new OkHttpClient();
