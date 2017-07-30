@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadDataAsync() {
-        String url = "https://api.github.com/users/uncleleonfan";
+        String url = "http://publicobject.com/helloworld.txt";
         Request request = new Request.Builder().get().url(url).build();
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.newCall(request).enqueue(new Callback() {
@@ -96,7 +97,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
+//                Log.d(TAG, "onResponse: " + response.body().string());
                 Log.d(TAG, "onResponse: " + result);
+                //获取字节数组
+                byte[] bytes = response.body().bytes();
+                //获取InputStream
+                InputStream inputStream = response.body().byteStream();
             }
         });
     }
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String url = "https://api.github.com/users/uncleleonfan";
+                String url = "http://publicobject.com/helloworld.txt";
                 Request request = new Request.Builder().get().url(url).build();
                 OkHttpClient okHttpClient = new OkHttpClient();
                 try {
